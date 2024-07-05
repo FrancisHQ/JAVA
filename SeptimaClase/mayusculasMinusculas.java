@@ -1,5 +1,6 @@
 package SeptimaClase;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class mayusculasMinusculas {
@@ -9,11 +10,28 @@ public class mayusculasMinusculas {
 
         System.out.println("Ingresa una frase: ");
         String frase = scanner.nextLine();
-        scanner.close();
 
-        String mayusculas = frase.toUpperCase();
-        String minusculas = frase.toLowerCase();
-        System.out.println("La frase en mayúsculas es: " + mayusculas);
-        System.out.println("La frase en minúsculas es: " + minusculas);
+        System.out.println("¿Desea en mayusculas o minusculas?: \n1.Mayusculas\n2.Minusculas");
+        
+        try {
+            int value = scanner.nextInt();
+            scanner.close();
+
+            switch (value) {
+                case 1:
+                    String mayusculas = frase.toUpperCase();
+                    System.out.println("La frase en mayúsculas es: " + mayusculas);
+                    break;
+                case 2:
+                    String minusculas = frase.toLowerCase();
+                    System.out.println("La frase en minúsculas es: " + minusculas);
+                    break;
+                default:
+                    System.out.println("La opción seleccionada es invalida.");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("La opción seleccionada es invalida.");
+        }
     }
 }
